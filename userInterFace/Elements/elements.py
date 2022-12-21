@@ -49,6 +49,9 @@ class TextElement(BasePageElement):
         element.send_keys(value)
         element.send_keys(Keys.TAB)
 
+    def __get__(self, instance, owner):
+        return self._find_element(instance.driver)
+
 
 class CheckboxElement(BasePageElement):
     """Element reprezentujący pole wyboru tak/nie."""
@@ -102,13 +105,8 @@ class ListElement(BasePageElement):
     """Element reprezentujący listę
     UWAGA, dla systemu ARC elementy listy są gdzie indziej niż guzik je rozwijający, jak i pole zwartością ;-;"""
 
-    def __init__(self, locator_type, locator_value, children_locator_type, children_locator_value,
-                 value_getter_locator_type=None, value_getter_locator_value=None, use_text_instead_of_value=False):
-        """Children_locator_type i value powinny zwrócić listę WSZYSTKICH pól wyboru w liście
-        value_getter_locator_type i value są używane do pobrania aktualnej wartości listy, mogą zostać puste jeśli rozwijalny element ma wartość"""
-        self.children_locator = (children_locator_type, children_locator_value)
-        self.value_locator = (value_getter_locator_type, value_getter_locator_value)\
-            if value_getter_locator_type is not None else (locator_type, locator_value)
+    def __init__(self, locator_type, locator_value, use_text_instead_of_value=False):
+        self.children_locator = (locator_type, f"{locator_value}/option")
         self.use_text_instead_of_value = use_text_instead_of_value
         super().__init__(locator_type, locator_value)
 
@@ -118,19 +116,11 @@ class ListElement(BasePageElement):
         element.click()
         children = self._find_elements(obj.driver, self.children_locator)
         for elem in children:
-            if elem.get_attribute('value') == value:
+            if elem.get_attribute('textContent' if self.use_text_instead_of_value else 'value') == value:
                 break
         else:
             raise LookupError(f"No child element of value {value} found")
         elem.click()
-        if self.use_text_instead_of_value:
-            custom_condition = lambda: obj.driver.find_element(self.value_locator).get_attribute('value') == value
-        else:
-            custom_condition = lambda: obj.driver.find_element(self.value_locator).text.strip() == value
-        WebDriverWait(obj.driver, WAITING_TIME).until(custom_condition),\
-            f"The list has not updated its value to {value} after clicking"
-        if value ^ element.is_selected():
-            element.click()
 
     def __get__(self, obj, owner):
         """Pobranie wartości."""

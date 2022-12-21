@@ -40,7 +40,7 @@ class CardDetailsInputPage(BasePage):
             https://testvpos.eservice.com.pl/fim/eservicegate"""
     bin_text_element = TextElement(By.XPATH, '//*[@id="pan"]')
     expire_month_list_element = ListElement(By.XPATH,'/html/body/div/div/div[2]/div[2]/div[1]/div/div/form/div[2]/div/div/div[1]/select')
-    expire_year_list_element = ListElement(By.XPATH, '/html/body/div/div/div[2]/div[2]/div[1]/div/div/form/div[2]/div/div/div[2]/select')
+    expire_year_list_element = ListElement(By.XPATH, '/html/body/div/div/div[2]/div[2]/div[1]/div/div/form/div[2]/div/div/div[2]/select', True)
     cvv_text_element = TextElement(By.XPATH, '//*[@id="Cvv2Val"]')
     pay_button = ClickableElement(By.XPATH,' //*[@id="btnSbmt"]')
 
@@ -53,5 +53,7 @@ class ResultPage(BasePage):
     payment_method = TextElement(By.XPATH, '//*[@id="PaymentMethod"]')
     trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
     response = TextElement(By.XPATH,'//*[@id="Response"]')
+
+
 
 

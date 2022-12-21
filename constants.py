@@ -13,6 +13,7 @@ VISA1_YEAR = 2024
 VISA1_CVV = 207
 
 EUR_currency = 978
+POL_currency = 985
 
 bank_status_pending = " Oczekujący / Pending -> "
 bank_status_approved = " Poprawny / Approved -> "

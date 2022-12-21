@@ -7,7 +7,7 @@ class GetTokenData:
         self.mid = mid if mid else merchant1
         self.total_amount = total_amount if total_amount else default_total_amount
         self.currency = currency if currency else POL_currency
-        self.order_id = order_id = order_id
+        self.order_id = order_id
         self.password = password if password else merchant_password
 
 

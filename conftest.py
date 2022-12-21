@@ -1,6 +1,27 @@
 import pytest
 from selenium import webdriver as selenium_webdriver
 
+
+@pytest.fixture
+def token_data_container():
+    container = []
+    yield container
+    print(f"Data container contents:\n{f'{chr(10)}'.join(container)}")
+
+
+def pytest_addoption(parser):
+    """Dodanie dodatkowych argumentów wywołania."""
+    parser.addoption(
+        "--no-headless", action="store_true", default=False, help="Do not use Chrome headless mode. Default: False."
+    )
+    parser.addoption(
+        "--webdriver-path", action="store",
+        help="Path to a webdriver. If not given, it is assumed it is in the $PATH. Overrides --no-default-path"
+    )
+    parser.addoption("--Dkey", action="store",
+                     help="Master password for central en/decryption")
+
+
 @pytest.fixture(scope="module")
 def webdriver(request):
     """Obsługa Selenium WebDriver.
