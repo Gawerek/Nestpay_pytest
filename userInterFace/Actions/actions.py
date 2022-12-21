@@ -45,12 +45,20 @@ def choose_mas_payment_method(webdriver):
     mas_btn.click()
 
 
-def fill_card_details_Visa(webdriver):
+# def fill_card_details_Visa(webdriver):
+#     card_details_page = CardDetailsInputPage(webdriver)
+#     card_details_page.bin_text_element = VISA1["BIN"]
+#     card_details_page.cvv_text_element = VISA1["CVV"]
+#     card_details_page.expire_month_list_element = VISA1["MONTH"]
+#     card_details_page.expire_year_list_element = VISA1["YEAR"]
+#     card_details_page.pay_button.click()
+
+def fill_card_details_Visa(webdriver, card_details_data_visa : CardDetailsDataVisa):
     card_details_page = CardDetailsInputPage(webdriver)
-    card_details_page.bin_text_element = VISA1["BIN"]
-    card_details_page.cvv_text_element = VISA1["CVV"]
-    card_details_page.expire_month_list_element = VISA1["MONTH"]
-    card_details_page.expire_year_list_element = VISA1["YEAR"]
+    card_details_page.bin_text_element = card_details_data_visa.bin
+    card_details_page.cvv_text_element = card_details_data_visa.cvv
+    card_details_page.expire_month_list_element = card_details_data_visa.expire_month
+    card_details_page.expire_year_list_element = card_details_data_visa.expire_year
     card_details_page.pay_button.click()
 
 def fill_card_details_MAS(webdriver):

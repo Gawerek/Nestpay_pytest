@@ -24,8 +24,8 @@ class SendTokenData:
 
 
 class CardDetailsDataVisa:
-    def __int__(self, expire_month=VISA1["MONTH"], number=VISA1["BIN"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"]):
-        self.number = number
+    def __init__(self, expire_month, bin, expire_year, cvv):
+        self.bin = bin
         self.expire_month = expire_month
         self.expire_year = expire_year
         self.cvv = cvv
