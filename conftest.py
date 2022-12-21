@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver as selenium_webdriver
 
 @pytest.fixture(scope="module")
-def webdriver(request, url):
+def webdriver(request):
     """Obsługa Selenium WebDriver.
 
     Inspirowane: https://stackoverflow.com/questions/48450594/selenium-timed-out-receiving-message-from-renderer
@@ -42,7 +42,7 @@ def webdriver(request, url):
     # Dodanie argumentu "--start-maximized" do driver_options nie wystarcza
     driver.set_window_size(1920, 1080)
     # driver.maximize_window()
-    driver.get(url)
+    # driver.get(url)
     # driver.implicitly_wait(1)
 
     yield driver

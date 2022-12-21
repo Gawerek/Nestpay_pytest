@@ -24,8 +24,9 @@ CC_loginName = "mgawron"
 CC_password = "E6CC476E19"
 
 
-merchant1 = 720000001111101
-
+merchant1 = '720000001111101'
+merchant_password = '123456'
+default_total_amount = '1'
 
 MAS1 = {
     "BIN": 5457210001000019,
@@ -35,10 +36,10 @@ MAS1 = {
 }
 
 VISA1 = {
-    "BIN": 4012001037141112,
-    "MONTH": 12,
-    "YEAR": 2024,
-    "CVV": 207
+    "BIN": "4012001037141112",
+    "MONTH": "12",
+    "YEAR": "2024",
+    "CVV": "207"
 }
 
 WAITING_TIME = 30
