@@ -1,6 +1,6 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
     ResultPage
-from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsDataVisa
+from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData
 from constants import *
 
 
@@ -53,12 +53,12 @@ def choose_mas_payment_method(webdriver):
 #     card_details_page.expire_year_list_element = VISA1["YEAR"]
 #     card_details_page.pay_button.click()
 
-def fill_card_details_Visa(webdriver, card_details_data_visa : CardDetailsDataVisa):
+def fill_card_details(webdriver, card_details_data : CardDetailsData):
     card_details_page = CardDetailsInputPage(webdriver)
-    card_details_page.bin_text_element = card_details_data_visa.bin
-    card_details_page.cvv_text_element = card_details_data_visa.cvv
-    card_details_page.expire_month_list_element = card_details_data_visa.expire_month
-    card_details_page.expire_year_list_element = card_details_data_visa.expire_year
+    card_details_page.bin_text_element = card_details_data.bin
+    card_details_page.cvv_text_element = card_details_data.cvv
+    card_details_page.expire_month_list_element = card_details_data.expire_month
+    card_details_page.expire_year_list_element = card_details_data.expire_year
     card_details_page.pay_button.click()
 
 def fill_card_details_MAS(webdriver):

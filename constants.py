@@ -30,10 +30,10 @@ merchant_password = '123456'
 default_total_amount = '1'
 
 MAS1 = {
-    "BIN": 5457210001000019,
-    "MONTH": 12,
-    "YEAR": 27,
-    "CVV": 300
+    "BIN": "5457210001000019",
+    "MONTH": "12",
+    "YEAR": "2027",
+    "CVV": "300"
 }
 
 VISA1 = {

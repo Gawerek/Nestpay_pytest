@@ -6,7 +6,7 @@ from selenium import webdriver as selenium_webdriver
 def token_data_container():
     container = []
     yield container
-    print(f"Data container contents:\n{f'{chr(10)}'.join(container)}")
+    print(f"\nData container contents:\n{f'{chr(10)}'.join(container)}")
 
 
 def pytest_addoption(parser):

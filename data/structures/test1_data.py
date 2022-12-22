@@ -23,7 +23,7 @@ class SendTokenData:
         self.trans_type = trans_type if trans_type else 'Auth'
 
 
-class CardDetailsDataVisa:
+class CardDetailsData:
     def __init__(self, expire_month, bin, expire_year, cvv):
         self.bin = bin
         self.expire_month = expire_month
