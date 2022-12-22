@@ -45,6 +45,12 @@ def choose_mas_payment_method(webdriver):
     mas_btn.click()
 
 
+def choose_lukas_payment_method(webdriver):
+    choose_payment_page = ChooseMethodPaymentPage(webdriver)
+    lukas_btn = choose_payment_page.credit_agricole_method_payment_button
+    lukas_btn.click()
+
+
 # def fill_card_details_Visa(webdriver):
 #     card_details_page = CardDetailsInputPage(webdriver)
 #     card_details_page.bin_text_element = VISA1["BIN"]
@@ -53,13 +59,14 @@ def choose_mas_payment_method(webdriver):
 #     card_details_page.expire_year_list_element = VISA1["YEAR"]
 #     card_details_page.pay_button.click()
 
-def fill_card_details(webdriver, card_details_data : CardDetailsData):
+def fill_card_details(webdriver, card_details_data: CardDetailsData):
     card_details_page = CardDetailsInputPage(webdriver)
     card_details_page.bin_text_element = card_details_data.bin
     card_details_page.cvv_text_element = card_details_data.cvv
     card_details_page.expire_month_list_element = card_details_data.expire_month
     card_details_page.expire_year_list_element = card_details_data.expire_year
     card_details_page.pay_button.click()
+
 
 def fill_card_details_MAS(webdriver):
     card_details_page = CardDetailsInputPage(webdriver)
@@ -76,11 +83,14 @@ def show_result(webdriver):
     result_token = show_result_page.token.get_attribute('value')
     result_payment_method = show_result_page.payment_method.get_attribute('value')
     result_response = show_result_page.response.get_attribute('value')
-    result_trans_id = show_result_page.trans_id.get_attribute('value')
+    # result_trans_id = show_result_page.trans_id.get_attribute('value')
+    if show_result_page.trans_id.get_attribute('value'):
+        result_trans_id = show_result_page.trans_id.get_attribute('value')
+    else:
+        pass
     return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
     # print(result_order_id, end=" order_id ")
     # print(result_token, end=" token ")
     # print(result_payment_method, end=" payment method ")
     # print(result_response, end=" result response ")
     # print(result_trans_id, end=" result transId ")
-

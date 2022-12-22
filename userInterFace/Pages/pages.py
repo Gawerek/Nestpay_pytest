@@ -32,7 +32,7 @@ class ChooseMethodPaymentPage(BasePage):
     visa_method_payment_button = ClickableElement(By.XPATH, '//*[@id="main"]/div[2]/div[1]/div[2]/ul/li[1]/a')
     mastercard_method_payment_button = ClickableElement(By.XPATH,'//*[@id="main"]/div[2]/div[1]/div[2]/ul/li[2]/a')
     ipko_method_payment_button = ClickableElement(By.XPATH, '//*[@id="main"]/div[2]/div[5]/div/ul/li[3]/a')
-    credit_agricole_method_payment_button = ClickableElement(By.XPATH, '//*[@id="main"]/div[2]/div[5]/div/ul/li[4]/a')
+    credit_agricole_method_payment_button = ClickableElement(By.XPATH, '//*[@id="main"]/div[2]/div[2]/div[2]/ul/li[2]/a')
     ca_bank_method_payment_button = ClickableElement(By.XPATH,'//*[@id="main"]/div[2]/div[2]/div[2]/ul/li[3]/a')
 
 class CardDetailsInputPage(BasePage):
