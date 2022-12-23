@@ -54,6 +54,21 @@ class ResultPage(BasePage):
     trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
     response = TextElement(By.XPATH,'//*[@id="Response"]')
 
+class CreditAgricoleStatusPage(BasePage):
+    """A class representing test bank status simulator
+                   https://testvpos.eservice.com.pl/testbank/index.php"""
+    declined_btn = ClickableElement(By.XPATH,'/html/body/form[1]/input[9]')
+    pending_btn = ClickableElement(By.XPATH,'/html/body/form[2]/input[9]')
+    approved_btn = ClickableElement(By.XPATH,'/html/body/form[3]/input[9]')
 
+class CCloginPage(BasePage):
+    """A class representing CC login page
+                       https://testvpos.eservice.com.pl:19446/controlcenter/report/admin.login"""
+    acq_uid_text_element = TextElement(By.XPATH, '//*[@id="acqUid"]')
+    username_text_element = TextElement(By.XPATH, '//*[@id="loginName"]')
+    password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
+    log_in_btn = ClickableElement(By.XPATH,'//*[@id="loginForm"]/div/input[2]')
 
-
+class CCHomePage(BasePage):
+    """A class representing CC Home Page
+    https://testvpos.eservice.com.pl:19446/controlcenter/report/admin.action"""

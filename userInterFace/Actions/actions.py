@@ -1,6 +1,6 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage
-from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData
+    ResultPage, CreditAgricoleStatusPage, CCloginPage
+from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData
 from constants import *
 
 
@@ -68,13 +68,13 @@ def fill_card_details(webdriver, card_details_data: CardDetailsData):
     card_details_page.pay_button.click()
 
 
-def fill_card_details_MAS(webdriver):
-    card_details_page = CardDetailsInputPage(webdriver)
-    card_details_page.bin_text_element = MAS1["BIN"]
-    card_details_page.cvv_text_element = MAS1["CVV"]
-    card_details_page.expire_month_list_element = MAS1["MONTH"]
-    card_details_page.expire_year_list_element = MAS1["YEAR"]
-    card_details_page.pay_button.click()
+# def fill_card_details_MAS(webdriver):
+#     card_details_page = CardDetailsInputPage(webdriver)
+#     card_details_page.bin_text_element = MAS1["BIN"]
+#     card_details_page.cvv_text_element = MAS1["CVV"]
+#     card_details_page.expire_month_list_element = MAS1["MONTH"]
+#     card_details_page.expire_year_list_element = MAS1["YEAR"]
+#     card_details_page.pay_button.click()
 
 
 def show_result(webdriver):
@@ -94,3 +94,28 @@ def show_result(webdriver):
     # print(result_payment_method, end=" payment method ")
     # print(result_response, end=" result response ")
     # print(result_trans_id, end=" result transId ")
+
+
+def select_approved_status_credit_agricole(webdriver):
+    select_status_page = CreditAgricoleStatusPage(webdriver)
+    select_status_page.approved_btn.click()
+
+
+def select_declined_status_credit_agricole(webdriver):
+    select_status_page = CreditAgricoleStatusPage(webdriver)
+    select_status_page.declined_btn.click()
+
+
+def select_pending_status_credit_agricole(webdriver):
+    select_status_page = CreditAgricoleStatusPage(webdriver)
+    select_status_page.pending_btn.click()
+
+def log_in_to_CC(webdriver, login_page_data : LoginPageData):
+    log_in_page = CCloginPage(webdriver)
+    log_in_page.password_text_element = login_page_data.password
+    log_in_page.acq_uid_text_element = login_page_data.acq_uid
+    log_in_page.username_text_element = login_page_data.username
+    log_in_page.log_in_btn.click()
+
+
+

@@ -30,6 +30,13 @@ class CardDetailsData:
         self.expire_year = expire_year
         self.cvv = cvv
 
+class LoginPageData:
+    def __init__(self, acq_uid, username, password):
+        self.acq_uid = acq_uid
+        self.username = username
+        self.password = password
+
+
 
 
 

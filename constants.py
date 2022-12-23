@@ -20,7 +20,7 @@ bank_status_approved = " Poprawny / Approved -> "
 bank_status_declined = " Odmowa / Declined -> "
 
 
-CC_acqUid = 0
+CC_acqUid = "0"
 CC_loginName = "mgawron"
 CC_password = "E6CC476E19"
 
