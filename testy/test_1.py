@@ -110,4 +110,5 @@ def test_1l(webdriver, token_data_container):
     webdriver.get(CC_URL)
     this_login_data = LoginPageData(acq_uid=CC_acqUid, username=CC_loginName, password=CC_password)
     actions.log_in_to_CC(webdriver, this_login_data)
-    time.sleep(5)
+    actions.select_merchant_administration_panel(webdriver)
+

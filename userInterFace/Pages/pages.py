@@ -69,6 +69,12 @@ class CCloginPage(BasePage):
     password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
     log_in_btn = ClickableElement(By.XPATH,'//*[@id="loginForm"]/div/input[2]')
 
-class CCHomePage(BasePage):
-    """A class representing CC Home Page
+class CCNavBarPage(BasePage):
+    """A class representing CC navigation bar
     https://testvpos.eservice.com.pl:19446/controlcenter/report/admin.action"""
+    merchant_administration_panel_btn = ClickableElement(By.XPATH, '//*[@id="header"]/div[2]/ul/li[2]/a')
+    transaction_report_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[3]/a')
+    login_to_merchant_panel = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[1]/a')
+    user_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[4]/a')
+    content_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[5]/a')
+    system_btn = ClickableElement(By.XPATH,'//*[@id="current"]/a')

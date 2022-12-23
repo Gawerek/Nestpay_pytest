@@ -1,5 +1,5 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage, CreditAgricoleStatusPage, CCloginPage
+    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage
 from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData
 from constants import *
 
@@ -116,6 +116,10 @@ def log_in_to_CC(webdriver, login_page_data : LoginPageData):
     log_in_page.acq_uid_text_element = login_page_data.acq_uid
     log_in_page.username_text_element = login_page_data.username
     log_in_page.log_in_btn.click()
+
+def select_merchant_administration_panel(webdriver):
+    navbar_page = CCNavBarPage(webdriver)
+    navbar_page.merchant_administration_panel_btn.click()
 
 
 
