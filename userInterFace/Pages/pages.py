@@ -78,3 +78,9 @@ class CCNavBarPage(BasePage):
     user_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[4]/a')
     content_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[5]/a')
     system_btn = ClickableElement(By.XPATH,'//*[@id="current"]/a')
+
+class CCMerchantAdministrationPanel(BasePage):
+
+    update_merchant_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[1]/ul/li[3]/a')
+    update_merchant_search_text_element = TextElement(By.XPATH,'//*[@id="right"]/div[2]/div[2]/div[2]/form/table/tbody/tr[1]/td[2]/input')
+    update_merchant_search_btn =   ClickableElement(By.XPATH, '//*[@id="right"]/div[2]/div[2]/div[2]/form/table/tbody/tr[2]/td/input')

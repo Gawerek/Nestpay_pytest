@@ -36,6 +36,10 @@ class LoginPageData:
         self.username = username
         self.password = password
 
+class UpdateSearchMerchantData:
+    def __init__(self, merchant_id):
+        self.merchant_id = merchant_id
+
 
 
 

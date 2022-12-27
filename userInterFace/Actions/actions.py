@@ -1,6 +1,6 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage
-from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData
+    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage, CCMerchantAdministrationPanel
+from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData
 from constants import *
 
 
@@ -120,6 +120,13 @@ def log_in_to_CC(webdriver, login_page_data : LoginPageData):
 def select_merchant_administration_panel(webdriver):
     navbar_page = CCNavBarPage(webdriver)
     navbar_page.merchant_administration_panel_btn.click()
+
+def select_update_merchant_section(webdriver, merchantId: UpdateSearchMerchantData):
+    merchant_administration_bar = CCMerchantAdministrationPanel(webdriver)
+    merchant_administration_bar.update_merchant_btn.click()
+    merchant_administration_bar.update_merchant_search_text_element = merchantId.merchant_id
+    merchant_administration_bar.update_merchant_search_btn.click()
+
 
 
 
