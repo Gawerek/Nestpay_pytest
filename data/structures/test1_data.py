@@ -40,6 +40,13 @@ class UpdateSearchMerchantData:
     def __init__(self, merchant_id):
         self.merchant_id = merchant_id
 
+class UpdateMerchantData:
+    def __init__(self, amount_limit=None, etransfer_limit=None):
+        self.etransfer_limit = etransfer_limit
+        self.amount_limit = amount_limit
+
+
+
 
 
 

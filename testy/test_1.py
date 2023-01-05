@@ -5,7 +5,7 @@ import pytest
 
 from time import sleep
 from userInterFace.Actions import actions
-from data.structures.test1_data import GetTokenData, SendTokenData,CardDetailsData, LoginPageData, UpdateSearchMerchantData
+from data.structures.test1_data import GetTokenData, SendTokenData,CardDetailsData, LoginPageData, UpdateSearchMerchantData, UpdateMerchantData
 from constants import *
 # @pytest.mark.parametrize("token_data", [
 #     GetTokenData(total_amount='10'),
@@ -113,6 +113,7 @@ def test_1l(webdriver, token_data_container):
     actions.select_merchant_administration_panel(webdriver)
     this_merchant_id_value = UpdateSearchMerchantData(merchant_id=merchant1)
     actions.select_update_merchant_section(webdriver, this_merchant_id_value)
-
-
+    this_merchant_limits = UpdateMerchantData(amount_limit=1000, etransfer_limit=0)
+    actions.update_merchant_limits(webdriver, this_merchant_limits)
+    print("")
 

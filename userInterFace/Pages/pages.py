@@ -80,7 +80,15 @@ class CCNavBarPage(BasePage):
     system_btn = ClickableElement(By.XPATH,'//*[@id="current"]/a')
 
 class CCMerchantAdministrationPanel(BasePage):
-
+    """A class representing CC Merchant Administration Panel
+    https://testvpos.eservice.com.pl:19446/controlcenter/report/dim.seek?FPT=Q5JB-RZ5E-D5XK-549E-Q37P-BG55-EACT-7TM8"""
     update_merchant_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[1]/ul/li[3]/a')
     update_merchant_search_text_element = TextElement(By.XPATH,'//*[@id="right"]/div[2]/div[2]/div[2]/form/table/tbody/tr[1]/td[2]/input')
-    update_merchant_search_btn =   ClickableElement(By.XPATH, '//*[@id="right"]/div[2]/div[2]/div[2]/form/table/tbody/tr[2]/td/input')
+    update_merchant_search_btn = ClickableElement(By.XPATH, '//*[@id="right"]/div[2]/div[2]/div[2]/form/table/tbody/tr[2]/td/input')
+
+class CCUpdateMerchantPage(BasePage):
+    """A class representing CC Update Merchant Page
+        https://testvpos.eservice.com.pl:19446/controlcenter/report/eservice.merchantDetails"""
+    amount_limit_text_element = TextElement(By.XPATH, '//*[@id="amountLimit"]')
+    etransfer_limit_text_element = TextElement(By.XPATH,'//*[@id="etransferLimit"]')
+    submit_btn = ClickableElement(By.XPATH,'//*[@id="eservice.merchantDetails"]/input[4]')

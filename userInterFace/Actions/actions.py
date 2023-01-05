@@ -1,6 +1,6 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage, CCMerchantAdministrationPanel
-from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData
+    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage
+from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData, UpdateMerchantData
 from constants import *
 
 
@@ -126,6 +126,14 @@ def select_update_merchant_section(webdriver, merchantId: UpdateSearchMerchantDa
     merchant_administration_bar.update_merchant_btn.click()
     merchant_administration_bar.update_merchant_search_text_element = merchantId.merchant_id
     merchant_administration_bar.update_merchant_search_btn.click()
+
+def update_merchant_limits(webdriver, merchant_limits: UpdateMerchantData):
+    update_merchant_page = CCUpdateMerchantPage(webdriver)
+    update_merchant_page.etransfer_limit_text_element = merchant_limits.etransfer_limit
+    update_merchant_page.amount_limit_text_element = merchant_limits.amount_limit
+    update_merchant_page.driver.execute_script("arguments[0].scrollIntoView();", update_merchant_page.submit_btn)
+    update_merchant_page.submit_btn.click()
+
 
 
 
