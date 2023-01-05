@@ -86,9 +86,10 @@ def show_result(webdriver):
     # result_trans_id = show_result_page.trans_id.get_attribute('value')
     if show_result_page.trans_id.get_attribute('value'):
         result_trans_id = show_result_page.trans_id.get_attribute('value')
+        return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
     else:
-        pass
-    return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
+        return [result_order_id, result_token, result_payment_method, result_response]
+    # return [result_order_id, result_token, result_payment_method, result_response]
     # print(result_order_id, end=" order_id ")
     # print(result_token, end=" token ")
     # print(result_payment_method, end=" payment method ")

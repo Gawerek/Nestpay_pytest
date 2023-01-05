@@ -51,7 +51,10 @@ class ResultPage(BasePage):
     order_id = TextElement(By.XPATH, '//*[@id="OrderId"]')
     token = TextElement(By.XPATH,'//*[@id="Token"]')
     payment_method = TextElement(By.XPATH, '//*[@id="PaymentMethod"]')
-    trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
+    if TextElement(By.XPATH,'//*[@id="TransId"]')!= None:
+        trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
+    else:
+        pass # Is that stupid or no?
     response = TextElement(By.XPATH,'//*[@id="Response"]')
 
 class CreditAgricoleStatusPage(BasePage):
