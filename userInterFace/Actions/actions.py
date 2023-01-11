@@ -1,6 +1,7 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage
-from data.structures.test_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData, UpdateMerchantData
+    ResultPage, CreditAgricoleStatusPage, CCloginPage, CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage
+from data.structures.test_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData, \
+    UpdateSearchMerchantData, UpdateMerchantData
 from constants import *
 
 
@@ -77,7 +78,7 @@ def fill_card_details(webdriver, card_details_data: CardDetailsData):
 #     card_details_page.pay_button.click()
 
 
-def show_result(webdriver, ass_errMsg = None):
+def show_result(webdriver, ass_errMsg=None):
     show_result_page = ResultPage(webdriver)
     result_order_id = show_result_page.order_id.get_attribute('value')
     result_token = show_result_page.token.get_attribute('value')
@@ -114,16 +115,19 @@ def select_pending_status_credit_agricole(webdriver):
     select_status_page = CreditAgricoleStatusPage(webdriver)
     select_status_page.pending_btn.click()
 
-def log_in_to_CC(webdriver, login_page_data : LoginPageData):
+
+def log_in_to_CC(webdriver, login_page_data: LoginPageData):
     log_in_page = CCloginPage(webdriver)
     log_in_page.password_text_element = login_page_data.password
     log_in_page.acq_uid_text_element = login_page_data.acq_uid
     log_in_page.username_text_element = login_page_data.username
     log_in_page.log_in_btn.click()
 
+
 def select_merchant_administration_panel(webdriver):
     navbar_page = CCNavBarPage(webdriver)
     navbar_page.merchant_administration_panel_btn.click()
+
 
 def select_update_merchant_section(webdriver, merchantId: UpdateSearchMerchantData):
     merchant_administration_bar = CCMerchantAdministrationPanel(webdriver)
@@ -131,14 +135,10 @@ def select_update_merchant_section(webdriver, merchantId: UpdateSearchMerchantDa
     merchant_administration_bar.update_merchant_search_text_element = merchantId.merchant_id
     merchant_administration_bar.update_merchant_search_btn.click()
 
+
 def update_merchant_limits(webdriver, merchant_limits: UpdateMerchantData):
     update_merchant_page = CCUpdateMerchantPage(webdriver)
     update_merchant_page.etransfer_limit_text_element = merchant_limits.etransfer_limit
     update_merchant_page.amount_limit_text_element = merchant_limits.amount_limit
     update_merchant_page.driver.execute_script("arguments[0].scrollIntoView();", update_merchant_page.submit_btn)
     update_merchant_page.submit_btn.click()
-
-
-
-
-
