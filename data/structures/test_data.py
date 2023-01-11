@@ -13,7 +13,7 @@ class GetTokenData:
 
 class SendTokenData:
     def __init__(self, mid=None, total_amount=None, currency=None,
-                 order_id=None, payment_method=None, trans_type=None, token=None):
+                 order_id=None, payment_method=None, trans_type=None, token=None, store_type = None):
         self.token = token if token else token
         self.mid = mid if mid else merchant1
         self.total_amount = total_amount if total_amount else default_total_amount
@@ -21,6 +21,7 @@ class SendTokenData:
         self.order_id = order_id = order_id
         self.payment_method = payment_method if payment_method else ''
         self.trans_type = trans_type if trans_type else 'Auth'
+        self.store_type = store_type if store_type else '3d_pay_hosting'
 
 
 class CardDetailsData:
