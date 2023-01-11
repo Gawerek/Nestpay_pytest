@@ -51,11 +51,12 @@ class ResultPage(BasePage):
     order_id = TextElement(By.XPATH, '//*[@id="OrderId"]')
     token = TextElement(By.XPATH,'//*[@id="Token"]')
     payment_method = TextElement(By.XPATH, '//*[@id="PaymentMethod"]')
-    if TextElement(By.XPATH,'//*[@id="TransId"]')!= None:
-        trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
-    else:
-        pass # Is that stupid or no?
+    # if TextElement(By.XPATH,'//*[@id="TransId"]')!= None:
+    #     trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
+    # else:
+    #     pass # Is that stupid or no?
     response = TextElement(By.XPATH,'//*[@id="Response"]')
+    errMsg_text_element = TextElement(By.XPATH, '//*[@id="ErrMsg"]')
 
 class CreditAgricoleStatusPage(BasePage):
     """A class representing test bank status simulator

@@ -26,6 +26,7 @@ CC_password = "E6CC476E19"
 
 
 merchant1 = '720000001111101'
+merchant2 = '720000009999901'
 merchant_password = '123456'
 default_total_amount = '1'
 
@@ -43,12 +44,12 @@ VISA1 = {
     "CVV": "207"
 }
 
-WAITING_TIME = 30
+WAITING_TIME = 40
 
 pa_credentials ={
     "MID": 720000001111101,
     "USER": "mga",
-    "PASSWORD": "7ED7367F7C@#QDER"
+    "PASSWORD": "7ED7367F7C@#QDER1"
 }
 
 

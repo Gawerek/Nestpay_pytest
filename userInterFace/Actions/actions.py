@@ -1,6 +1,6 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
     ResultPage, CreditAgricoleStatusPage, CCloginPage,CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage
-from data.structures.test1_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData, UpdateMerchantData
+from data.structures.test_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData,UpdateSearchMerchantData, UpdateMerchantData
 from constants import *
 
 
@@ -77,19 +77,22 @@ def fill_card_details(webdriver, card_details_data: CardDetailsData):
 #     card_details_page.pay_button.click()
 
 
-def show_result(webdriver):
+def show_result(webdriver, ass_errMsg = None):
     show_result_page = ResultPage(webdriver)
     result_order_id = show_result_page.order_id.get_attribute('value')
     result_token = show_result_page.token.get_attribute('value')
     result_payment_method = show_result_page.payment_method.get_attribute('value')
     result_response = show_result_page.response.get_attribute('value')
+    result_errmsg = show_result_page.errMsg_text_element.get_attribute('value')
+    if ass_errMsg:
+        assert ass_errMsg in result_errmsg
     # result_trans_id = show_result_page.trans_id.get_attribute('value')
-    if show_result_page.trans_id.get_attribute('value'):
-        result_trans_id = show_result_page.trans_id.get_attribute('value')
-        return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
-    else:
-        return [result_order_id, result_token, result_payment_method, result_response]
-    # return [result_order_id, result_token, result_payment_method, result_response]
+    # if show_result_page.trans_id.get_attribute('value'):
+    #     result_trans_id = show_result_page.trans_id.get_attribute('value')
+    #     return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
+    # else:
+    #     return [result_order_id, result_token, result_payment_method, result_response]
+    return [result_order_id, result_token, result_payment_method, result_response]
     # print(result_order_id, end=" order_id ")
     # print(result_token, end=" token ")
     # print(result_payment_method, end=" payment method ")
