@@ -1,7 +1,8 @@
 from userInterFace.Pages.pages import GetTokenPage, SendTokenPage, ChooseMethodPaymentPage, CardDetailsInputPage, \
-    ResultPage, CreditAgricoleStatusPage, CCloginPage, CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage
+    ResultPage, CreditAgricoleStatusPage, CCloginPage, CCNavBarPage, CCMerchantAdministrationPanel, CCUpdateMerchantPage, \
+BOIPAloginPage
 from data.structures.test_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData, \
-    UpdateSearchMerchantData, UpdateMerchantData
+    UpdateSearchMerchantData, UpdateMerchantData, BOIPAloginData
 from constants import *
 
 
@@ -142,3 +143,10 @@ def update_merchant_limits(webdriver, merchant_limits: UpdateMerchantData):
     update_merchant_page.amount_limit_text_element = merchant_limits.amount_limit
     update_merchant_page.driver.execute_script("arguments[0].scrollIntoView();", update_merchant_page.submit_btn)
     update_merchant_page.submit_btn.click()
+
+def log_in_to_BOIPAIE(webdriver, boipaIE_log_in_data : BOIPAloginData):
+    boipaIE_log_in_page = BOIPAloginPage(webdriver)
+    boipaIE_log_in_page.merchant_id_text_element = boipaIE_log_in_data.mid
+    boipaIE_log_in_page.password_text_element = boipaIE_log_in_data.password
+    boipaIE_log_in_page.username_text_element = boipaIE_log_in_data.username
+    boipaIE_log_in_page.log_in_btn.click()

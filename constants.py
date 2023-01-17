@@ -60,3 +60,18 @@ location = {
     "country":"POLSKA"
 }
 
+boipaIE = "https://testvpos.eservice.com.pl/boipa/report/user.login?language=en&FPT=I0M4-Y03Q-LAJ8-TGZP-954G-LK2Z-Q7H7-S7H1"
+
+boipaIE_credentials= {
+    "mid":"IE7200001111101",
+    "username":"mga",
+    "password": "K3rxK7TdO3Z1skjWyXyD11"
+}
+
+boipaUK = "https://testvpos.eservice.com.pl/boipauk/report/user.login?language=en&FPT=O7AJ-0ZFK-NVAE-KW7F-83TJ-0DTU-647M-BHB6"
+
+boipaUK_credentials= {
+    "mid":"GB7200001111101",
+    "username":"mga",
+    "password": "K3rxK7TdO3Z1skjWyXyD12"
+}

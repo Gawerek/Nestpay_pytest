@@ -13,7 +13,7 @@ class GetTokenData:
 
 class SendTokenData:
     def __init__(self, mid=None, total_amount=None, currency=None,
-                 order_id=None, payment_method=None, trans_type=None, token=None, store_type = None):
+                 order_id=None, payment_method=None, trans_type=None, token=None, store_type=None):
         self.token = token if token else token
         self.mid = mid if mid else merchant1
         self.total_amount = total_amount if total_amount else default_total_amount
@@ -31,15 +31,18 @@ class CardDetailsData:
         self.expire_year = expire_year
         self.cvv = cvv
 
+
 class LoginPageData:
     def __init__(self, acq_uid, username, password):
         self.acq_uid = acq_uid
         self.username = username
         self.password = password
 
+
 class UpdateSearchMerchantData:
     def __init__(self, merchant_id):
         self.merchant_id = merchant_id
+
 
 class UpdateMerchantData:
     def __init__(self, amount_limit=None, etransfer_limit=None):
@@ -47,8 +50,8 @@ class UpdateMerchantData:
         self.amount_limit = amount_limit
 
 
-
-
-
-
-
+class BOIPAloginData:
+    def __init__(self, mid, username, password):
+        self.mid = mid
+        self.username = username
+        self.password = password

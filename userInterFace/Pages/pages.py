@@ -96,3 +96,12 @@ class CCUpdateMerchantPage(BasePage):
     amount_limit_text_element = TextElement(By.XPATH, '//*[@id="amountLimit"]')
     etransfer_limit_text_element = TextElement(By.XPATH,'//*[@id="etransferLimit"]')
     submit_btn = ClickableElement(By.XPATH,'//*[@id="eservice.merchantDetails"]/input[4]')
+
+
+class BOIPAloginPage(BasePage):
+    """A class representing BOIPA IE login page
+                       https://testvpos.eservice.com.pl/boipa/report/user.login?language=en&FPT=I0M4-Y03Q-LAJ8-TGZP-954G-LK2Z-Q7H7-S7H1"""
+    merchant_id_text_element = TextElement(By.XPATH, '//*[@id="criteria"]')
+    username_text_element = TextElement(By.XPATH, '//*[@id="loginName"]')
+    password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
+    log_in_btn = ClickableElement(By.XPATH,'//*[@id="formLogin"]/div/div/input[1]')
