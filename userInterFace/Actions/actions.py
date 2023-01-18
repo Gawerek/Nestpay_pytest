@@ -79,7 +79,7 @@ def fill_card_details(webdriver, card_details_data: CardDetailsData):
 #     card_details_page.pay_button.click()
 
 
-def show_result(webdriver, ass_errMsg=None):
+def show_result(webdriver, ass_errMsg=None, ass_response=None):
     show_result_page = ResultPage(webdriver)
     result_order_id = show_result_page.order_id.get_attribute('value')
     result_token = show_result_page.token.get_attribute('value')
@@ -88,18 +88,26 @@ def show_result(webdriver, ass_errMsg=None):
     result_errmsg = show_result_page.errMsg_text_element.get_attribute('value')
     if ass_errMsg:
         assert ass_errMsg in result_errmsg
+    if ass_response:
+        assert ass_response in result_response
+
+    return [result_order_id, result_token, result_payment_method, result_response]
     # result_trans_id = show_result_page.trans_id.get_attribute('value')
     # if show_result_page.trans_id.get_attribute('value'):
     #     result_trans_id = show_result_page.trans_id.get_attribute('value')
     #     return [result_order_id, result_token, result_payment_method, result_response, result_trans_id]
     # else:
     #     return [result_order_id, result_token, result_payment_method, result_response]
-    return [result_order_id, result_token, result_payment_method, result_response]
     # print(result_order_id, end=" order_id ")
     # print(result_token, end=" token ")
     # print(result_payment_method, end=" payment method ")
     # print(result_response, end=" result response ")
     # print(result_trans_id, end=" result transId ")
+
+def show_order_id(webdriver):
+    result_page = ResultPage(webdriver)
+    result_order_id = result_page.order_id.get_attribute('value')
+    return result_order_id
 
 
 def select_approved_status_credit_agricole(webdriver):

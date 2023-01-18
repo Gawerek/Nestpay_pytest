@@ -8,6 +8,12 @@ def token_data_container():
     yield container
     print(f"\nData container contents:\n{f'{chr(10)}'.join(container)}")
 
+@pytest.fixture
+def order_list():
+    order_list_container = []
+    yield order_list_container
+    print(f"\nData container contents:\n{f'{chr(10)}'.join(order_list_container)}")
+
 
 def pytest_addoption(parser):
     """Dodanie dodatkowych argumentów wywołania."""

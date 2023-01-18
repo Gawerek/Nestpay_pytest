@@ -105,3 +105,4 @@ class BOIPAloginPage(BasePage):
     username_text_element = TextElement(By.XPATH, '//*[@id="loginName"]')
     password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
     log_in_btn = ClickableElement(By.XPATH,'//*[@id="formLogin"]/div/div/input[1]')
+
