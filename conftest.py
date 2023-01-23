@@ -1,18 +1,24 @@
 import pytest
 from selenium import webdriver as selenium_webdriver
+import datetime
 
-
-@pytest.fixture
+@pytest.fixture()
 def token_data_container():
     container = []
     yield container
     print(f"\nData container contents:\n{f'{chr(10)}'.join(container)}")
 
-@pytest.fixture
+
+@pytest.fixture(scope="session")
 def order_list():
     order_list_container = []
+    ct = datetime.datetime.now()
+    ts = ct.timestamp()
     yield order_list_container
-    print(f"\nData container contents:\n{f'{chr(10)}'.join(order_list_container)}")
+    print(f"\nOrder list:\n{f'{chr(10)}'.join(order_list_container)}")
+    file = open(f'C:\\autoTestyNESTPAY\\Nestpay_pytest\\data\\order_list{ts}.txt', 'w')
+    for order in order_list_container:
+        file.write(order + "\n")
 
 
 def pytest_addoption(parser):

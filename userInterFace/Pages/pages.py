@@ -26,6 +26,19 @@ class SendTokenPage(BasePage):
     pay_button = ClickableElement(By.XPATH, '/html/body/form/table/tbody/tr[45]/td/input')
 
 
+class SendTokenBOIPAPage(BasePage):
+    """A class representing a send token page
+        https://s1.lmx.com.pl/gawer/test/payment.php"""
+    mid_text_element = TextElement(By.XPATH, '/html/body/form/table/tbody/tr[1]/td[2]/input')
+    orderId_text_element = TextElement(By.XPATH, '/html/body/form/table/tbody/tr[2]/td[2]/input')
+    token_text_element = TextElement(By.XPATH, '/html/body/form/table/tbody/tr[3]/td[2]/input')
+    total_text_element = TextElement(By.XPATH, '/html/body/form/table/tbody/tr[4]/td[2]/input')
+    storeType_list_element = ListElement(By.XPATH, '/html/body/form/table/tbody/tr[5]/td[2]/select')
+    transType_list_element = ListElement(By.XPATH, '/html/body/form/table/tbody/tr[6]/td[2]/select')
+    paymentMethod = ListElement(By.XPATH, '/html/body/form/table/tbody/tr[7]/td[2]/select')
+    currency_text_element = TextElement(By.XPATH, '/html/body/form/table/tbody/tr[8]/td[2]/input')
+    pay_button= ClickableElement(By.XPATH,'/html/body/form/table/tbody/tr[42]/td/input')
+
 class ChooseMethodPaymentPage(BasePage):
     """A class representing a choose method payment page
         https://testvpos.eservice.com.pl/fim/eservicegate"""
@@ -44,6 +57,11 @@ class CardDetailsInputPage(BasePage):
     cvv_text_element = TextElement(By.XPATH, '//*[@id="Cvv2Val"]')
     pay_button = ClickableElement(By.XPATH,' //*[@id="btnSbmt"]')
 
+class DCCCardDetailsPayPage(BasePage):
+    """A class representing a card details input page
+            https://testvpos.eservice.com.pl/fim/eservicegate"""
+    card_currency_pay_button = ClickableElement(By.XPATH,'//*[@id="cardBtn"]')
+    payment_currency_pay_button = ClickableElement(By.XPATH, '//*[@id="homeBtn"]')
 
 class ResultPage(BasePage):
     """A class representing ok result page
@@ -51,12 +69,15 @@ class ResultPage(BasePage):
     order_id = TextElement(By.XPATH, '//*[@id="OrderId"]')
     token = TextElement(By.XPATH,'//*[@id="Token"]')
     payment_method = TextElement(By.XPATH, '//*[@id="PaymentMethod"]')
+    response = TextElement(By.XPATH,'//*[@id="Response"]')
+    if TextElement(By.XPATH, '//*[@id="ErrMsg"]'):
+        errMsg_text_element = TextElement(By.XPATH, '//*[@id="ErrMsg"]')
+
     # if TextElement(By.XPATH,'//*[@id="TransId"]')!= None:
     #     trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
     # else:
     #     pass # Is that stupid or no?
-    response = TextElement(By.XPATH,'//*[@id="Response"]')
-    errMsg_text_element = TextElement(By.XPATH, '//*[@id="ErrMsg"]')
+
 
 class CreditAgricoleStatusPage(BasePage):
     """A class representing test bank status simulator
@@ -73,7 +94,7 @@ class CCloginPage(BasePage):
     password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
     log_in_btn = ClickableElement(By.XPATH,'//*[@id="loginForm"]/div/input[2]')
 
-class CCNavBarPage(BasePage):
+class CCHomePage(BasePage):
     """A class representing CC navigation bar
     https://testvpos.eservice.com.pl:19446/controlcenter/report/admin.action"""
     merchant_administration_panel_btn = ClickableElement(By.XPATH, '//*[@id="header"]/div[2]/ul/li[2]/a')
@@ -81,7 +102,10 @@ class CCNavBarPage(BasePage):
     login_to_merchant_panel = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[1]/a')
     user_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[4]/a')
     content_managment_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div[2]/ul/li[5]/a')
+    filter_merchant_text_element = TextElement(By.XPATH,'//*[@id="filter"]')
+    filter_merchant_result_btn = ClickableElement(By.XPATH,'//*[@id="switchToTableForm"]/table/tbody/tr/td[1]/a')
     system_btn = ClickableElement(By.XPATH,'//*[@id="current"]/a')
+    login_to_merchant_center_btn = ClickableElement(By.XPATH,'//*[@id="command"]/div/input')
 
 class CCMerchantAdministrationPanel(BasePage):
     """A class representing CC Merchant Administration Panel
@@ -98,6 +122,8 @@ class CCUpdateMerchantPage(BasePage):
     submit_btn = ClickableElement(By.XPATH,'//*[@id="eservice.merchantDetails"]/input[4]')
 
 
+
+
 class BOIPAloginPage(BasePage):
     """A class representing BOIPA IE login page
                        https://testvpos.eservice.com.pl/boipa/report/user.login?language=en&FPT=I0M4-Y03Q-LAJ8-TGZP-954G-LK2Z-Q7H7-S7H1"""
@@ -106,3 +132,23 @@ class BOIPAloginPage(BasePage):
     password_text_element = TextElement(By.XPATH, '//*[@id="userPassword"]')
     log_in_btn = ClickableElement(By.XPATH,'//*[@id="formLogin"]/div/div/input[1]')
 
+class PaHomePage(BasePage):
+    """A class representing BOIPA IE login page
+                          https://testvpos.eservice.com.pl/eservice/report/main?FPT=RMYD-977G-AHO4-1402-ED9F-N8OP-U3Y3-7QT7"""
+    menu_orders_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div/a[1]')
+    menu_transactions_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div/a[2]')
+    menu_settlement_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div/a[3]')
+    menu_virtual_terminal_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div/a[4]')
+    menu_administration_btn = ClickableElement(By.XPATH,'//*[@id="header"]/div/a[5]')
+
+class PaOrdersPage(BasePage):
+    qa_today_sales_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[1]/a')
+    qa_today_voids_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[2]/a')
+    qa_today_refunds_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[3]/a')
+    qa_today_preauth_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[3]/a')
+    qa_today_all_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[3]/a')
+    qa_lastweek_sales_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[6]/a')
+    qa_lastweek_voids_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[7]/a')
+    qa_lastweek_refunds_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[8]/a')
+    qa_lastweek_preauth_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[9]/a')
+    qa_lastweek_all_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[10]/a')

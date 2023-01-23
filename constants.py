@@ -49,7 +49,7 @@ WAITING_TIME = 40
 pa_credentials ={
     "MID": 720000001111101,
     "USER": "mga",
-    "PASSWORD": "7ED7367F7C@#QDER1"
+    "PASSWORD": "7ED7367F7C@#QDER12"
 }
 
 
@@ -75,3 +75,5 @@ boipaUK_credentials= {
     "username":"mga",
     "password": "K3rxK7TdO3Z1skjWyXyD12"
 }
+
+auto_api_url ='https://s1.lmx.com.pl/gawer/autotest/testapi/'

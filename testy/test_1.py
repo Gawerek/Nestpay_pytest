@@ -72,7 +72,7 @@ def test_1e(webdriver, token_data_container, order_list):
     this_token_data = GetTokenData(total_amount='10')
     # token_data_container.append(this_token_data)
     actions.fill_token_data(webdriver, this_token_data)
-    this_send_token_data = SendTokenData(total_amount='10', trans_type="Auth")
+    this_send_token_data = SendTokenData(total_amount='10', trans_type="PreAuth")
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_visa_payment_method(webdriver)
     credit_card_visa = CardDetailsData(expire_month=VISA1["MONTH"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"], bin=VISA1["BIN"])
@@ -84,7 +84,7 @@ def test_1f(webdriver, token_data_container, order_list):
     webdriver.get(BASE_URL)
     this_token_data = GetTokenData(total_amount='1')
     actions.fill_token_data(webdriver, this_token_data)
-    this_send_token_data = SendTokenData(total_amount='1', trans_type="Auth")
+    this_send_token_data = SendTokenData(total_amount='1', trans_type="PreAuth")
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_mas_payment_method(webdriver)
     credit_card_MAS = CardDetailsData(expire_month=MAS1["MONTH"], expire_year=MAS1["YEAR"], cvv=MAS1["CVV"], bin=MAS1["BIN"])
@@ -96,7 +96,7 @@ def test_1g(webdriver, token_data_container, order_list):
     webdriver.get(BASE_URL)
     this_token_data = GetTokenData(total_amount='1', currency=EUR_currency)
     actions.fill_token_data(webdriver, this_token_data)
-    this_send_token_data = SendTokenData(total_amount='1', currency=EUR_currency, trans_type="Auth")
+    this_send_token_data = SendTokenData(total_amount='1', currency=EUR_currency, trans_type="PreAuth")
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_visa_payment_method(webdriver)
     credit_card_visa = CardDetailsData(expire_month=VISA1["MONTH"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"], bin=VISA1["BIN"])
@@ -112,7 +112,7 @@ def test_1j(webdriver, token_data_container, order_list):
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_lukas_payment_method(webdriver)
     actions.select_approved_status_credit_agricole(webdriver)
-    token_data_container.extend(actions.show_result(webdriver))
+    token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
     order_list.append(actions.show_order_id(webdriver))
 #
 def test_1l(webdriver, token_data_container):
@@ -170,8 +170,7 @@ def test_1n(webdriver, token_data_container):
     this_send_token_data = SendTokenData(total_amount=1000)
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_lukas_payment_method(webdriver)
-    actions.show_result(webdriver, ass_errMsg="Transakcja zablokowana z powodu przekroczenia parametrów monitoringu bezpieczeństwa transakcjiTransakcja zablokowana z powodu przekroczenia parametrów monitoringu bezpieczeństwa transakcji")
-
+    actions.show_result(webdriver, ass_errMsg="Transakcja zablokowana z powodu przekroczenia parametrów monitoringu bezpieczeństwa transakcji")
 # #     Could add another show result actions for only error result page or change current to handle it without transId
 #
 
