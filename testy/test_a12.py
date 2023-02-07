@@ -66,7 +66,7 @@ def test_12e(webdriver, token_data_container, order_list):
     webdriver.get(BASE_URL)
     this_token_data = GetTokenData(total_amount='10')
     actions.fill_token_data(webdriver, this_token_data)
-    this_send_token_data = SendTokenData(total_amount='10', trans_type="PreAuth")
+    this_send_token_data = SendTokenData(total_amount='10')
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_mas_payment_method(webdriver)
     credit_card_MAS = CardDetailsData(expire_month=MAS1["MONTH"], expire_year=MAS1["YEAR"], cvv=MAS1["CVV"],
@@ -86,6 +86,6 @@ def test_12e(webdriver, token_data_container, order_list):
     credit_card_MAS = CardDetailsData(expire_month=MAS1["MONTH"], expire_year=MAS1["YEAR"], cvv=MAS1["CVV"],
                                       bin=MAS1["BIN"])
     actions.DCC_fill_card_details(webdriver, credit_card_MAS)
-    actions.dcc_select_currency(webdriver, orginal_card_curr=True)
+    actions.dcc_select_currency(webdriver)
     token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
     order_list.append(actions.show_order_id(webdriver))

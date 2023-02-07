@@ -11,7 +11,7 @@ def test_11a(webdriver):
     log_in_to_BOIPAIE(webdriver, boipaIE_login_data)
 
 def test_11b(webdriver):
-    webdriver.get(boipaIE)
+    webdriver.get(boipaUK)
     boipaUK_login_data = BOIPAloginData(mid=boipaUK_credentials["mid"], password=boipaUK_credentials["password"], \
                                         username=boipaUK_credentials["username"])
     log_in_to_BOIPAIE(webdriver, boipaUK_login_data)

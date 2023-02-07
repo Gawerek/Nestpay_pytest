@@ -63,20 +63,26 @@ class DCCCardDetailsPayPage(BasePage):
     card_currency_pay_button = ClickableElement(By.XPATH,'//*[@id="cardBtn"]')
     payment_currency_pay_button = ClickableElement(By.XPATH, '//*[@id="homeBtn"]')
 
+
 class ResultPage(BasePage):
-    """A class representing ok result page
-                https://s1.lmx.com.pl/gawer/test/ok.php"""
+    # def __init__(self, order_id, token, payment_method, response):
+    #     super().__init__(self, order_id, token, payment_method, response)
     order_id = TextElement(By.XPATH, '//*[@id="OrderId"]')
     token = TextElement(By.XPATH,'//*[@id="Token"]')
     payment_method = TextElement(By.XPATH, '//*[@id="PaymentMethod"]')
     response = TextElement(By.XPATH,'//*[@id="Response"]')
-    if TextElement(By.XPATH, '//*[@id="ErrMsg"]'):
-        errMsg_text_element = TextElement(By.XPATH, '//*[@id="ErrMsg"]')
-
     # if TextElement(By.XPATH,'//*[@id="TransId"]')!= None:
     #     trans_id = TextElement(By.XPATH,'//*[@id="TransId"]')
     # else:
     #     pass # Is that stupid or no?
+
+
+class ResultPageWithError(ResultPage):
+    """A class representing ok result page
+                https://s1.lmx.com.pl/gawer/test/ok.php"""
+    errMsg_text_element = TextElement(By.XPATH, '//*[@id="ErrMsg"]')
+
+
 
 
 class CreditAgricoleStatusPage(BasePage):

@@ -1,10 +1,13 @@
 import time
-from constants import *
-import pytest
-from time import sleep
+
+from userInterFace.Pages import pages
+from data.structures.test_data import GetTokenData, SendTokenData, CardDetailsData, LoginPageData, \
+    UpdateSearchMerchantData, UpdateMerchantData
 from userInterFace.Actions import actions
-from data.structures.test_data import GetTokenData, SendTokenData,CardDetailsData, LoginPageData, UpdateSearchMerchantData, UpdateMerchantData
+from userInterFace.Pages import pages
 from constants import *
+
+
 # @pytest.mark.parametrize("token_data", [
 #     GetTokenData(total_amount='10'),
 #     GetTokenData(),
@@ -32,7 +35,6 @@ def test_1a(webdriver, token_data_container, order_list):
 def test_1b(webdriver, token_data_container,order_list):
     webdriver.get(BASE_URL)
     this_token_data = GetTokenData(total_amount='10')
-    # token_data_container.append(this_token_data)
     actions.fill_token_data(webdriver, this_token_data)
     this_send_token_data = SendTokenData(total_amount='10')
     actions.fill_send_token_data(webdriver, this_send_token_data)
@@ -112,7 +114,7 @@ def test_1j(webdriver, token_data_container, order_list):
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_lukas_payment_method(webdriver)
     actions.select_approved_status_credit_agricole(webdriver)
-    token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
+    token_data_container.extend(actions.show_result(webdriver, ass_response="Approved", show_result_page_class=pages.ResultPage))
     order_list.append(actions.show_order_id(webdriver))
 #
 def test_1l(webdriver, token_data_container):
@@ -132,7 +134,8 @@ def test_1l(webdriver, token_data_container):
     actions.choose_visa_payment_method(webdriver)
     credit_card_visa = CardDetailsData(expire_month=VISA1["MONTH"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"], bin=VISA1["BIN"])
     actions.fill_card_details(webdriver, credit_card_visa)
-    actions.show_result(webdriver)
+    token_data_container.extend(actions.show_result(webdriver, ass_errMsg="ErrorCode: ErrorDesc: Eci:null"))
+
 
 #
 def test_1m(webdriver, token_data_container, order_list):
@@ -152,7 +155,7 @@ def test_1m(webdriver, token_data_container, order_list):
     actions.choose_mas_payment_method(webdriver)
     credit_card_mas = CardDetailsData(expire_month=MAS1["MONTH"], expire_year=MAS1["YEAR"], cvv=MAS1["CVV"], bin=MAS1["BIN"])
     actions.fill_card_details(webdriver, credit_card_mas)
-    token_data_container.extend(actions.show_result(webdriver))
+    token_data_container.extend(actions.show_result(webdriver, show_result_page_class=pages.ResultPage))
     order_list.append(actions.show_order_id(webdriver))
 #
 def test_1n(webdriver, token_data_container):
@@ -170,7 +173,7 @@ def test_1n(webdriver, token_data_container):
     this_send_token_data = SendTokenData(total_amount=1000)
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_lukas_payment_method(webdriver)
-    actions.show_result(webdriver, ass_errMsg="Transakcja zablokowana z powodu przekroczenia parametrów monitoringu bezpieczeństwa transakcji")
+    token_data_container.extend(actions.show_result(webdriver, ass_errMsg="Transakcja zablokowana z powodu przekroczenia parametrów monitoringu bezpieczeństwa transakcji"))
 # #     Could add another show result actions for only error result page or change current to handle it without transId
 #
 
@@ -190,5 +193,5 @@ def test_1u(webdriver, token_data_container, order_list):
     actions.fill_send_token_data(webdriver, this_send_token_data)
     actions.choose_lukas_payment_method(webdriver)
     actions.select_approved_status_credit_agricole(webdriver)
-    token_data_container.extend(actions.show_result(webdriver))
+    token_data_container.extend(actions.show_result(webdriver, ass_response="Approved", show_result_page_class=pages.ResultPage))
     order_list.append(actions.show_order_id(webdriver))

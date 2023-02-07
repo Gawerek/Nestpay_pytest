@@ -2,6 +2,8 @@ BASE_URL ="https://s1.lmx.com.pl/gawer/test/"
 CC_URL = "https://testvpos.eservice.com.pl:19446/controlcenter/report/admin.login"
 PA_URL = "https://testvpos.eservice.com.pl/eservice/report/user.login?language=en&FPT=OR8S-L0DE-XPN2-K9OX-WA0F-HQGG-PKEG-3W3G"
 
+orderlist2=[]
+
 MAS1_BIN = 5457210001000019
 MAS1_MONTH = 12
 MAS1_YEAR = 2027
