@@ -158,3 +158,12 @@ class PaOrdersPage(BasePage):
     qa_lastweek_refunds_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[8]/a')
     qa_lastweek_preauth_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[9]/a')
     qa_lastweek_all_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[10]/a')
+
+class PaTransactionsPage(BasePage):
+    qa_lastweek_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[2]/a')
+    qa_today_btn = ClickableElement(By.XPATH, '//*[@id="navigation"]/li[2]/ul/li[2]/a')
+    qa_last_month_btn = ClickableElement(By.XPATH,'//*[@id="navigation"]/li[2]/ul/li[3]/a')
+    specify_time_range_btn = ClickableElement(By.XPATH,'//*[@id="searchByTime1"]')
+    start_date_text_element = TextElement(By.XPATH,'//*[@id="createdTsGT"]')
+    end_date_text_element = TextElement(By.XPATH, '//*[@id="createdTsLT"]')
+    submit_btn = ClickableElement(By.XPATH,'//*[@id="reportCommand"]/div/input')
