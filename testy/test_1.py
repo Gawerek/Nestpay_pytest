@@ -44,17 +44,17 @@ def test_1a(webdriver, token_data_container, order_list):
 #     token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
 #     order_list.append(actions.show_order_id(webdriver))
 # #
-# def test_1c(webdriver, token_data_container, order_list):
-#     webdriver.get(BASE_URL)
-#     this_token_data = GetTokenData(total_amount='1', currency=EUR_currency)
-#     actions.fill_token_data(webdriver, this_token_data)
-#     this_send_token_data = SendTokenData(total_amount='1', currency=EUR_currency)
-#     actions.fill_send_token_data(webdriver, this_send_token_data)
-#     actions.choose_visa_payment_method(webdriver)
-#     credit_card_visa = CardDetailsData(expire_month=VISA1["MONTH"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"], bin=VISA1["BIN"])
-#     actions.fill_card_details(webdriver, credit_card_visa)
-#     token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
-#     order_list.append(actions.show_order_id(webdriver))
+def test_1c(webdriver, token_data_container, order_list):
+    webdriver.get(BASE_URL)
+    this_token_data = GetTokenData(total_amount='1', currency=EUR_currency)
+    actions.fill_token_data(webdriver, this_token_data)
+    this_send_token_data = SendTokenData(total_amount='1', currency=EUR_currency)
+    actions.fill_send_token_data(webdriver, this_send_token_data)
+    actions.choose_visa_payment_method(webdriver)
+    credit_card_visa = CardDetailsData(expire_month=VISA1["MONTH"], expire_year=VISA1["YEAR"], cvv=VISA1["CVV"], bin=VISA1["BIN"])
+    actions.fill_card_details(webdriver, credit_card_visa)
+    token_data_container.extend(actions.show_result(webdriver, ass_response="Approved"))
+    order_list.append(actions.show_order_id(webdriver))
 # #
 # def test_1d(webdriver, token_data_container, order_list):
 #     webdriver.get(BASE_URL)

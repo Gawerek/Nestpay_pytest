@@ -146,6 +146,12 @@ def select_merchant_administration_panel(webdriver):
     navbar_page = CCHomePage(webdriver)
     navbar_page.merchant_administration_panel_btn.click()
 
+def search_merchant_administration_panel(webdriver, merchantId: UpdateSearchMerchantData):
+    merchant_administration_bar = CCMerchantAdministrationPanel(webdriver)
+    merchant_administration_bar.search_merchant_text_element = merchantId.merchant_id
+    merchant_administration_bar.search_merchant_btn.click()
+    merchant_administration_bar.search_merchant_result_btn.click()
+
 
 def select_report_section(webdriver, merchantId: UpdateSearchMerchantData):
     navbar_page = CCHomePage(webdriver)
@@ -216,6 +222,9 @@ def check_order_lists_in_order_section(webdriver, global_order_list, order_list2
 
     check = all(item in order_list2 for item in global_order_list)
 
+    for x in global_order_list:
+        print(x)
+
     if check is True:
         print("The list {} contains all elements of the list {}".format(order_list2, global_order_list))
     else:
@@ -240,6 +249,9 @@ def check_order_lists_in_transaction_section(webdriver, global_order_list, order
         order_list2.append(value)
 
     check = all(item in order_list2 for item in global_order_list)
+
+    for x in global_order_list:
+        print(x)
 
     if check is True:
         print("The list {} contains all elements of the list {}".format(order_list2, global_order_list))
